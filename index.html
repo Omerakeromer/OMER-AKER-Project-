@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريع تفاعلية تعليمية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>مرحبًا بكم في موقع المشاريع التفاعلية</h1>
+        <p>مكانكم للألعاب، الآلة الحاسبة، حساب العمر، وأسئلة العلوم!</p>
+        <p id="credit">
+            <span style="color: #ff0000;">BY</span>
+            <span style="color: #ff7f00;">OMER</span>
+            <span style="color: #ffff00;">ABO</span>
+            <span style="color: #00ff00;">AKER</span>
+        </p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#games">الألعاب</a></li>
+            <li><a href="#calculator">الآلة الحاسبة</a></li>
+            <li><a href="#quiz">أسئلة عامة</a></li>
+            <li><a href="#age-calculator">حساب العمر</a></li>
+            <li><a href="#science-quiz">أسئلة علوم الصف التاسع</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- قسم الألعاب -->
+        <section id="games">
+            <h2>الألعاب</h2>
+            <p>اختر لعبة للعب!</p>
+            <button onclick="playGuessingGame()">لعبة التخمين</button>
+            <button onclick="playRockPaperScissors()">حجر ورقة مقص</button>
+            <div id="game-output"></div>
+        </section>
+
+        <!-- قسم الآلة الحاسبة -->
+        <section id="calculator">
+            <h2>الآلة الحاسبة</h2>
+            <p>آلة حاسبة بسيطة للعمليات الأساسية:</p>
+            <input type="number" id="num1" placeholder="الرقم الأول">
+            <input type="number" id="num2" placeholder="الرقم الثاني">
+            <button onclick="calculate('add')">+</button>
+            <button onclick="calculate('subtract')">-</button>
+            <button onclick="calculate('multiply')">*</button>
+            <button onclick="calculate('divide')">/</button>
+            <div id="calc-result"></div>
+        </section>
+
+        <!-- قسم الأسئلة العامة -->
+        <section id="quiz">
+            <h2>أسئلة عامة</h2>
+            <p>اختبر معلوماتك العامة:</p>
+            <div id="question-container">
+                <h3 id="question">سؤال سيظهر هنا</h3>
+                <button onclick="submitAnswer(true)">صح</button>
+                <button onclick="submitAnswer(false)">خطأ</button>
+                <div id="quiz-result"></div>
+            </div>
+            <div id="score">النقاط: 0</div>
+        </section>
+
+        <!-- قسم حساب العمر -->
+        <section id="age-calculator">
+            <h2>حساب العمر</h2>
+            <p>ادخل تاريخ ميلادك لحساب عمرك:</p>
+            <input type="date" id="birth-date">
+            <button onclick="calculateAge()">احسب العمر</button>
+            <div id="age-result"></div>
+        </section>
+
+        <!-- قسم أسئلة علوم الصف التاسع -->
+        <section id="science-quiz">
+            <h2>أسئلة علوم الصف التاسع</h2>
+            <p>اختبر معلوماتك في العلوم للصف التاسع:</p>
+            <div id="science-question-container">
+                <h3 id="science-question">سؤال سيظهر هنا</h3>
+                <button onclick="submitScienceAnswer(true)">صح</button>
+                <button onclick="submitScienceAnswer(false)">خطأ</button>
+                <div id="science-quiz-result"></div>
+            </div>
+            <div id="science-score">النقاط: 0</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>تم إنشاء هذا الموقع بواسطة عمر أبو عكر - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
