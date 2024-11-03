@@ -3,95 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاريع تفاعلية تعليمية</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BY OMER AKER</title>
+    <style>
+        /* تنسيقات CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #ff5733;
+            font-size: 2em;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .game, .tool {
+            background: #eee;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #007bff;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <img src="logo.png" alt="Logo" class="logo">
-        <h1>مرحبًا بكم في موقع المشاريع التفاعلية</h1>
-        <p>مكانكم للألعاب، الآلة الحاسبة، حساب العمر، وأسئلة العلوم!</p>
-        <p id="credit">
-            <span style="color: #ff0000;">BY</span>
-            <span style="color: #ff7f00;">OMER</span>
-            <span style="color: #ffff00;">ABO</span>
-            <span style="color: #00ff00;">AKER</span>
-        </p>
+        <h1>BY OMER AKER</h1>
+        <p>موقع يحتوي على أدوات وألعاب ممتعة</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#games">الألعاب</a></li>
-            <li><a href="#calculator">الآلة الحاسبة</a></li>
-            <li><a href="#quiz">أسئلة عامة</a></li>
-            <li><a href="#age-calculator">حساب العمر</a></li>
-            <li><a href="#science-quiz">أسئلة علوم الصف التاسع</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <!-- لعبة حجر ورقة مقص -->
+        <div class="game">
+            <h2>لعبة حجر ورقة مقص</h2>
+            <button onclick="playRPS('حجر')">حجر</button>
+            <button onclick="playRPS('ورقة')">ورقة</button>
+            <button onclick="playRPS('مقص')">مقص</button>
+            <p id="rpsResult" class="result"></p>
+        </div>
 
-    <main>
-        <!-- قسم الألعاب -->
-        <section id="games">
-            <h2>الألعاب</h2>
-            <p>اختر لعبة للعب!</p>
-            <button onclick="playGuessingGame()">لعبة التخمين</button>
-            <button onclick="playRockPaperScissors()">حجر ورقة مقص</button>
-            <div id="game-output"></div>
-        </section>
+        <!-- لعبة تخمين الرقم -->
+        <div class="game">
+            <h2>لعبة تخمين الرقم</h2>
+            <input type="number" id="guessInput" placeholder="أدخل رقم بين 1 و 10">
+            <button onclick="guessNumber()">جرب حظك!</button>
+            <p id="guessResult" class="result"></p>
+        </div>
 
-        <!-- قسم الآلة الحاسبة -->
-        <section id="calculator">
-            <h2>الآلة الحاسبة</h2>
-            <p>آلة حاسبة بسيطة للعمليات الأساسية:</p>
+        <!-- آلة حاسبة -->
+        <div class="tool">
+            <h2>آلة الحاسبة</h2>
             <input type="number" id="num1" placeholder="الرقم الأول">
             <input type="number" id="num2" placeholder="الرقم الثاني">
-            <button onclick="calculate('add')">+</button>
-            <button onclick="calculate('subtract')">-</button>
-            <button onclick="calculate('multiply')">*</button>
-            <button onclick="calculate('divide')">/</button>
-            <div id="calc-result"></div>
-        </section>
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('*')">×</button>
+            <button onclick="calculate('/')">÷</button>
+            <p id="calcResult" class="result"></p>
+        </div>
 
-        <!-- قسم الأسئلة العامة -->
-        <section id="quiz">
-            <h2>أسئلة عامة</h2>
-            <p>اختبر معلوماتك العامة:</p>
-            <div id="question-container">
-                <h3 id="question">سؤال سيظهر هنا</h3>
-                <button onclick="submitAnswer(true)">صح</button>
-                <button onclick="submitAnswer(false)">خطأ</button>
-                <div id="quiz-result"></div>
-            </div>
-            <div id="score">النقاط: 0</div>
-        </section>
+        <!-- آلة حساب العمر -->
+        <div class="tool">
+            <h2>آلة حساب العمر</h2>
+            <input type="date" id="birthDate">
+            <button onclick="calculateAge()">احسب عمرك</button>
+            <p id="ageResult" class="result"></p>
+        </div>
 
-        <!-- قسم حساب العمر -->
-        <section id="age-calculator">
-            <h2>حساب العمر</h2>
-            <p>ادخل تاريخ ميلادك لحساب عمرك:</p>
-            <input type="date" id="birth-date">
-            <button onclick="calculateAge()">احسب العمر</button>
-            <div id="age-result"></div>
-        </section>
+        <!-- لعبة الأسئلة العامة -->
+        <div class="game">
+            <h2>لعبة الأسئلة العامة</h2>
+            <button onclick="askQuestion()">اسألني سؤالاً</button>
+            <p id="questionResult" class="result"></p>
+        </div>
 
-        <!-- قسم أسئلة علوم الصف التاسع -->
-        <section id="science-quiz">
-            <h2>أسئلة علوم الصف التاسع</h2>
-            <p>اختبر معلوماتك في العلوم للصف التاسع:</p>
-            <div id="science-question-container">
-                <h3 id="science-question">سؤال سيظهر هنا</h3>
-                <button onclick="submitScienceAnswer(true)">صح</button>
-                <button onclick="submitScienceAnswer(false)">خطأ</button>
-                <div id="science-quiz-result"></div>
-            </div>
-            <div id="science-score">النقاط: 0</div>
-        </section>
-    </main>
+        <!-- زخرفة الاسماء -->
+        <div class="tool">
+            <h2>زخرفة الأسماء</h2>
+            <input type="text" id="nameInput" placeholder="أدخل اسمك">
+            <button onclick="decorateName()">زخرف اسمك</button>
+            <p id="decoratedResult" class="result"></p>
+        </div>
+    </div>
 
-    <footer>
-        <p>تم إنشاء هذا الموقع بواسطة عمر أبو عكر - جميع الحقوق محفوظة</p>
-    </footer>
+    <script>
+        // لعبة حجر ورقة مقص
+        function playRPS(choice) {
+            const choices = ['حجر', 'ورقة', 'مقص'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            let result;
+            if (choice === computerChoice) {
+                result = 'تعادل!';
+            } else if ((choice === 'حجر' && computerChoice === 'مقص') ||
+                       (choice === 'ورقة' && computerChoice === 'حجر') ||
+                       (choice === 'مقص' && computerChoice === 'ورقة')) {
+                result = 'أنت فزت!';
+            } else {
+                result = 'الحاسوب فاز!';
+            }
+            document.getElementById("rpsResult").textContent = `أنت اخترت ${choice} - الحاسوب اختار ${computerChoice}: ${result}`;
+        }
 
-    <script src="script.js"></script>
+        // لعبة تخمين الرقم
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+        function guessNumber() {
+            const guess = parseInt(document.getElementById("guessInput").value);
+            if (guess === randomNumber) {
+                document.getElementById("guessResult").textContent = 'صحيح! لقد خمّنت الرقم.';
+            } else {
+                document.getElementById("guessResult").textContent = 'خطأ! جرب مرة أخرى.';
+            }
+        }
+
+        // آلة حاسبة
+        function calculate(operator) {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            let result;
+            switch (operator) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': result = num2 !== 0 ? num1 / num2 : 'خطأ: قسمة على صفر'; break;
+            }
+            document.getElementById("calcResult").textContent = `النتيجة: ${result}`;
+        }
+
+        // آلة حساب العمر
+        function calculateAge() {
+            const birthDate = new Date(document.getElementById("birthDate").value);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const month = today.getMonth() - birthDate.getMonth();
+            if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById("ageResult").textContent = `عمرك: ${age} سنة`;
+        }
+
+        // لعبة الأسئلة العامة
+        function askQuestion() {
+            const questions = [
+                "ما هو عاصمة فرنسا؟",
+                "كم عدد الكواكب في النظام الشمسي؟",
+                "من اخترع الهاتف؟",
+                "ما هو أطول نهر في العالم؟",
+                "ما هي أكبر قارة؟"
+            ];
+            const question = questions[Math.floor(Math.random() * questions.length)];
+            document.getElementById("questionResult").textContent = question;
+        }
+
+        // زخرفة الاسماء
+        function decorateName() {
+            const name = document.getElementById("nameInput").value;
+            const styles = ['☆', '★', '✿', '❤', '⚜', '❀', '✾', '♛', '♚', '✰', '✪', '✶', '☯', '☮', '✦'];
+            let decorated = '';
+            for (const style of styles) {
+                decorated += style + name + style + ' ';
+            }
+            document.getElementById("decoratedResult").textContent = decorated;
+        }
+    </script>
+
 </body>
 </html>
